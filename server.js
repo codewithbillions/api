@@ -12,8 +12,17 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTop
 
 app.use(express.json())
 
-app.listen(3000, ()=> console.log('server has started') )
+const subscribersRouter = require('./route/subscribers');
+app.use('/subscribers', subscribersRouter)
 
+// app.listen(3000, ()=> console.log('server has started') )
+
+app.listen({
+    hostname: "127.0.0.1", // Just here !
+    port: 1854,
+  });
+  
+  console.log("Server running...");
 
 
 
